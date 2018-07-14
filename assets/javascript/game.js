@@ -1,4 +1,4 @@
-    var words = ["cat", "dog", "banana"]; //These are possible words.
+    var words = ['html', 'css', 'javascript', 'python', 'ruby', 'less', 'sass', 'php', 'go', 'java', 'swift', 'meteor', 'node', 'django', 'mysql', 'ionic', 'bootstrap', 'foundation', 'wordpress', 'drupal', 'net', 'angular', 'ember', 'backbone', 'jquery', 'underscore', 'mongodb', 'redis', 'oracle', 'sql', 'server', 'frontend', 'backend', 'http', 'ddp', 'rest', 'api', 'json', 'xml', 'csv'] //These are possible words.
 
     var chosenWord; //Holds the current word
     var chosenWordArray; //Holds the current word as an array of characters;
@@ -17,15 +17,19 @@
     var guessesDiv = document.getElementById("guessesRemaining");
     guessesDiv.textContent=guesses;
 
+    var alreadyGuessedDiv = document.getElementById("alreadyGuessed");
+
     var tallyDiv = document.getElementById("runningTally");
     tallyDiv.textContent=("Wins: "+wins + " Losses: " + losses);
+
+    var letters=['a', 'b', 'c', 'd', 'e', 'f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
 
     // document.querySelector("#guessedWord").innerHTML="help";
 
     var resetVariables = function(){
-        lettersGuessed=[""];
+        lettersGuessed=[];
         console.log("The letters already guessed are "+lettersGuessed);
-        guesses=5;
+        guesses=10;
         currentState=[];
         correctGuesses=0;
         chosenWord=words[Math.floor(Math.random() * words.length)]; //Gives a random word
@@ -34,6 +38,7 @@
         currentState.fill("_");
         guessedWordDiv.textContent = currentState;
         guessesDiv.textContent=guesses;
+        alreadyGuessedDiv.textContent=lettersGuessed;
         console.log("The new word is " + chosenWordArray);
         tallyDiv.textContent=("Wins: "+wins + " Losses: " + losses);
 }
@@ -45,12 +50,13 @@
 resetVariables();
     document.onkeyup = function (event) {
 
+
         // Determines which key was pressed.
 
         console.log(event.key);
 
         var userGuess = event.key;
-
+        if (letters.indexOf(userGuess)!== -1){
 
         //First check if the letter has already been guessed.
         if (lettersGuessed.indexOf(userGuess) !== -1) {
@@ -71,6 +77,7 @@ resetVariables();
                 console.log("Guesses left: " + guesses);
                 console.log("Wrong");
                 lettersGuessed.push(userGuess);
+                alreadyGuessedDiv.textContent=lettersGuessed;
 
             } else {
                 //The letter is part of the word.
@@ -80,14 +87,15 @@ resetVariables();
                     if (chosenWord[i]===userGuess){
                         currentState[i]=userGuess;
                         correctGuesses++;
-                        lettersGuessed.push(userGuess);
+                        console.log("current guess numbber is :" +correctGuesses);
+                        // lettersGuessed.push(userGuess);
                     }
                 }
                 guessedWordDiv.textContent = currentState;
 
                 console.log(currentState);
 
-                if (correctGuesses === chosenWord.length) {
+                if (correctGuesses >= chosenWord.length) {
                     guessedWordDiv.textContent="Winner";
                     wins++;
                     resetVariables();
@@ -101,4 +109,5 @@ resetVariables();
                 resetVariables();
             }
         }
+    }
     }
