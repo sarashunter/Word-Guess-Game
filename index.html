@@ -1,13 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Word Guess Game</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
 </head>
+
 <body>
-<script type="text/javascript" src="assets/javascript/game.js"></script>
+    <div class="container">
+        <div class="row mb-0">
+            <div id="guessedWord" class="jumbotron display-1 col-md-6 m-0"></div>
+            <div id="guessesRemaining" class="jumbotron display-1 col-md-3 bg-info m-0"></div>
+        </div>
+        <div class="row mb-0 mt-0">
+            <div id="runningTally" class="jumbotron col-9 mb-0 m-0 bg-danger display-4"></div>
+        </div>
+        <div class="row">
+            <div id="bottom" class="jumbotron col-sm-9 bg-dark m-0">
+                <div class="display-1 text-warning">This is Web 2.0</div>
+                <div class="display-3">Guess the technology.</div>
+                <p class="display-4 text-light">Press any key to get started.</p>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="assets/javascript/game.js"></script>
 </body>
 </html>
