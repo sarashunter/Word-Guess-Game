@@ -91,6 +91,8 @@ resetVariables();
                         // lettersGuessed.push(userGuess);
                     }
                 }
+                lettersGuessed.push(userGuess);
+                alreadyGuessedDiv.textContent=lettersGuessed;
                 guessedWordDiv.textContent = currentState;
 
                 console.log(currentState);
