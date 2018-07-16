@@ -20,7 +20,7 @@
     var alreadyGuessedDiv = document.getElementById("alreadyGuessed");
 
     var tallyDiv = document.getElementById("runningTally");
-    tallyDiv.textContent=("Wins: "+wins + " Losses: " + losses);
+    tallyDiv.html=("Wins: "+wins + " Losses: " + losses);
 
     var letters=['a', 'b', 'c', 'd', 'e', 'f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
 
