@@ -43,10 +43,7 @@ var resetVariables = function () {
     tallyDiv.textContent = ("Wins: " + wins + " Losses: " + losses);
 }
 
-// function startGame{
-
-
-// }
+//Reset the variables to start.
 resetVariables();
 document.onkeyup = function (event) {
 
@@ -56,38 +53,27 @@ document.onkeyup = function (event) {
     console.log(event.key);
 
     var userGuess = event.key;
+
+    //Check that the key is a letter.
     if (letters.indexOf(userGuess) !== -1) {
 
-        //First check if the letter has already been guessed.
-        if (lettersGuessed.indexOf(userGuess) !== -1) {
-
-            //If the letter has been guessed, tell the user.  Wait for next letter.
-            console.log("You already guessed that. lettersGuessed is " + lettersGuessed + "user guess is + " + userGuess);
-
-        } else {
+        //Check if the letter has already been guessed.
+        if (lettersGuessed.indexOf(userGuess) === -1) {
 
             //If the letter is a new letter, first check if it's part of the word.
-
-            var indexGuess = chosenWord.indexOf(userGuess);
-
-            if (indexGuess === -1) {
+            if (chosenWord.indexOf(userGuess) === -1) {
                 //If guess is not part of word, take away a guess.
                 guesses = guesses - 1;
                 guessesDiv.textContent = guesses;
-                console.log("Guesses left: " + guesses);
-                console.log("Wrong");
                 lettersGuessed.push(userGuess);
                 alreadyGuessedDiv.textContent = lettersGuessed;
-
             } else {
                 //The letter is part of the word.
-
                 //Need to check if the letter occurs more than once.
                 for (var i = 0; i < chosenWord.length; i++) {
                     if (chosenWord[i] === userGuess) {
                         currentState[i] = userGuess;
-                        correctGuesses++;
-                        console.log("current guess numbber is :" + correctGuesses);
+                        correctGuesses++; //it counts the same number twice if it is in the 
                         // lettersGuessed.push(userGuess);
                     }
                 }
@@ -97,6 +83,7 @@ document.onkeyup = function (event) {
 
                 console.log(currentState);
 
+                //Check when the game is over by checking the length of the correctGuesses array vs the chosenWord.
                 if (correctGuesses >= chosenWord.length) {
                     guessedWordDiv.textContent = "Winner";
                     wins++;
